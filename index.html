@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="manifest" href="manifest.json">
+
+  <title>Formulario de Ubicación</title>
+  </head>
+  
+<body>
+
+<div class="container">
+  <h2 class="mb-4">Formulario de Ubicación</h2>
+
+  <form id="ubicacionForm">
+    <div class="form-group">
+      <label for="pais">País:</label>
+      <select class="form-control" id="pais" onchange="cargarEstados()">
+        <option value="EstadosUnidos">Estados Unidos</option>
+        <option value="Canada">Canada</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="estado">Estado:</label>
+      <select class="form-control" id="estado"  onchange="cargarMunicipios()">
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="municipio">Municipio:</label>
+      <select class="form-control" id="municipio" onchange="cargarLocalidades()">
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="localidad">Localidad:</label>
+      <select class="form-control" id="localidad" >
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="mostrarDatos()">Enviar</button>
+  </form>
+
+  <div id="datosSeleccionados" class="mt-4">
+  </div>
+</div>
+
+
+<script>
+  if ("service-worker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then(res => console.log("service worker registered"))
+      .catch(err => console.log("service worker not registered", err))
+  })
+}
+</script>
+
+
+<script src="js/lugares.js"></script>
+</body>
+
+</html>
